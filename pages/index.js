@@ -58,7 +58,7 @@ export async function getStaticProps(){
         }
       }) 
     },
-    revalidate: 10 // re-generate this page after how many seconds if there are incoming requests for this page
+    revalidate: 1 // re-generate this page after how many seconds if there are incoming requests for this page
   }
 }
 

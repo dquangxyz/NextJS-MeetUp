@@ -31,11 +31,14 @@ export async function getStaticPaths(){
     client.close()
   
     return {
-        fallback: false,
+        fallback: 'blocking',
         paths: meetups_ID_arr.map(item => {
             return { params: {meetupID: item._id.toString()} }
         })
     }
+    // fallback: false --> any path that not specified in paths will return as 404 error
+    // fallback: true --> accept the path even if not specified in paths; return an empty page immediately, and pull down the content dynamically once done
+    // fallback: 'blocking' --> similar to true, but user will not see anything until the page is pre-generated, and the finished page will be served
 }
 
 export async function getStaticProps(context){
